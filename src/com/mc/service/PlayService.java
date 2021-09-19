@@ -49,13 +49,13 @@ public class PlayService {
             int prevPos = players.get(curr).getPos();
             currPos = prevPos+diceValue;
             Player p = players.get(curr);
-            if(board[currPos-1]==-1) p.setPos(snakes.get(currPos));
+            if(currPos>100) System.out.println(p.getName()+" rolled a "+diceValue+" but cannot move from "+prevPos);
+            else if(board[currPos-1]==-1) p.setPos(snakes.get(currPos));
             else if(board[currPos-1]==1) p.setPos(ladders.get(currPos));
             else p.setPos(currPos);
             players.put(curr,p);
             System.out.println(p.getName()+" rolled a "+diceValue+" and moved from "+prevPos+" to "+players.get(curr).getPos());
             if(currPos==100) break;
-            //curr=curr+1;
         }
         return players.get(curr).getName();
     }
